@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :author_id %><br>
+    <%= f.select :author_id, options_for_select(Author.all.collect {|a| ["#{a.lname}, #{a.fname}", a.id]}, selected: (@post.author ? @post.author.id : Author.first.id)), {} %>
+  </div>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

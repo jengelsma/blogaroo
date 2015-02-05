@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130010413) do
+ActiveRecord::Schema.define(version: 20150204214135) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "email"
+    t.string   "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +29,9 @@ ActiveRecord::Schema.define(version: 20150130010413) do
     t.integer  "status",     default: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "author_id"
   end
+
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id"
 
 end
