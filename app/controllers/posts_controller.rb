@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_statuses
 
+  respond_to :html, :js
+
+
   # GET /posts
   # GET /posts.json
   def index
@@ -27,18 +30,22 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     author = Author.find(post_params[:author_id])
-    @post.build_author(:id  => author.id) 
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    @post.build_author(:id => author.id)
+    @post.save!
+    @current_post = @post
+    @posts = Post.all
   end
+
+    # respond_to do |format|
+    #   if @post.save
+    #     format.html { redirect_to @post, notice: 'Post was successfully created.' }
+    #     format.json { render :show, status: :created, location: @post }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  # end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json

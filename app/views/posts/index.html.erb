@@ -2,8 +2,13 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Recent Postings</h1>
+<span class="btn">
+<%= link_to 'New Post', new_post_path, remote: true %>
+</span>
 
+
+<h1>Recent Postings</h1>
+<!--
     <% @posts.each do |post| %>
     <div class="article">
       <div class="article_title"> <%= post.title %> </div>
@@ -19,7 +24,10 @@
       </div>
     </div>
     <% end %>
+-->
+  <div id="posts">
+    <%= render @posts %>
+  </div>
+  
 
-<span class="btn">
-<%= link_to 'New Post', new_post_path %>
-</span>
+ <div id="blog-form" style="display:none;"></div>
