@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body {
+  height: 100%;
+}
+
 #banner {
   background: #607b7d;
   padding: 10px;
@@ -70,8 +75,8 @@
 }
 
 #columns {
-  background: #828e82;
-
+  background: #ffffff;
+    height: 100%;
   #main {
     margin-left: 17em;
     padding: 1em;
