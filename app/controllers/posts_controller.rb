@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_statuses
+  before_action :all_posts, only: [:index, :create, :destroy, :update]
+
+
 
   respond_to :html, :js
 
@@ -33,7 +36,6 @@ class PostsController < ApplicationController
     @post.build_author(:id => author.id)
     @post.save!
     @current_post = @post
-    @posts = Post.all
   end
 
     # respond_to do |format|
@@ -50,16 +52,20 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    @post.update!(post_params)
   end
+  
+  # def update
+  #   respond_to do |format|
+  #     if @post.update(post_params)
+  #       format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @post }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @post.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
@@ -86,4 +92,7 @@ class PostsController < ApplicationController
       @statuses = Post.statuses
     end
 
+    def all_posts
+      @posts = Post.all
+    end
 end
