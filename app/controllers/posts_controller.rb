@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   def update
     @post.update!(post_params)
   end
-  
+
   # def update
   #   respond_to do |format|
   #     if @post.update(post_params)
@@ -71,11 +71,15 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
+
+  # def destroy
+  #   @post.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
