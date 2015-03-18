@@ -10,8 +10,8 @@
   </div>
   <div class="article_text"> <%= post.article %> </div>
   <div class="actions">
-    <%= link_to 'Show', post %>
-    <%= link_to 'Edit', edit_post_path(post), remote: true %>
-    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+    <%= link_to 'Show', post, class: 'btn btn-primary btn-xs' %>
+    <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-info btn-xs', remote: true %>
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs', remote: true %>
   </div>
 </div>

@@ -2,9 +2,9 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<span class="btn">
-<%= link_to 'New Post', new_post_path, remote: true %>
-</span>
+<%= link_to new_post_path, class: 'btn btn-success', remote: true  do %>
+  <i class="glyphicon glyphicon-plus"></i> New Post
+<% end %>
 
 
 <h1>Recent Postings</h1>
