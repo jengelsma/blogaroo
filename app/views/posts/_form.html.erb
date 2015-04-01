@@ -13,34 +13,34 @@
   <div class="field form-group">
     <%= f.label :author_id, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-    <%= f.select :author_id, options_for_select(Author.all.collect {|a| ["#{a.lname}, #{a.fname}", a.id]}, selected: (@post.author ? @post.author.id : Author.first.id)), {}, class: 'form-control' %>
+      <%= f.select :author_id, options_for_select(Author.all.collect {|a| ["#{a.lname}, #{a.fname}", a.id]}, selected: (@post.author ? @post.author.id : Author.first.id)), {}, class: 'form-control' %>
     </div>
   </div>
   <div class="field form-group">
     <%= f.label :title, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-    <%= f.text_field :title, class: 'form-control'  %>
+      <%= f.text_field :title, class: 'form-control'  %>
     </div>
   </div>
   <div class="field form-group">
     <%= f.label :article, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-    <%= f.text_area :article, class: 'form-control'  %>
+      <%= f.text_area :article, class: 'form-control'  %>
     </div>
   </div>
   <div class="field from-group">
     <%= f.label :likes, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-    <%= f.number_field :likes, class: 'form-control'  %>
+      <%= f.number_field :likes, class: 'form-control'  %>
     </div>
   </div>
   <div class="field form-group">
     <%= f.label :status, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-    <%= f.select :status, options_for_select(@statuses.collect {|s| [s[0].humanize, s[0]]}, selected: @post.status), {}, class: 'form-control'  %>
+      <%= f.select :status, options_for_select(@statuses.collect {|s| [s[0].humanize, s[0]]}, selected: @post.status), {}, class: 'form-control'  %>
     </div>
   </div>
-<div class="actions form-group">
+  <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit %>
     </div>
