@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     post "authors/", to: "authors#create"
     put "author/", to: "authors#update"
     delete "author/", to: "authors#destroy"
+
+    get "posts/", to: "posts#index"
+    post "posts/", to: "posts#create"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

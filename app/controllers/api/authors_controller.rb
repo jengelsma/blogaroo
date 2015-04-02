@@ -1,11 +1,6 @@
 module Api
   class AuthorsController < Api::ApiBaseController
 
-  	def show
-  		author = Author.find_by(email: params[:email])
-  		render json: { authors: author }, status: :ok
-  	end
-
   	def index
   		authors = Author.all
   		render json: { authors: authors }, status: :ok
@@ -14,13 +9,13 @@ module Api
   	def create
   		author = Author.new(author_params)
   		
-      	if author.save
-      		api_response = { message: "Author was created successfully!" }
-      		render json: api_response, status: :created
-		else
-			api_response = { message: "Request didn't process successfully!", errors: author.errors }
-			render json: api_response, status: :unprocessable_entity
-	    end
+      if author.save
+        api_response = { message: "Author was created successfully!" }
+        render json: api_response, status: :created
+      else
+        api_response = { message: "Request didn't process successfully!", errors: author.errors }
+        render json: api_response, status: :unprocessable_entity
+	     end
   	end
 
   	def update
