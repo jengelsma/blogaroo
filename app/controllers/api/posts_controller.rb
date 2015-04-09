@@ -20,6 +20,19 @@ module Api
 	    end
   	end
 
+    # GET /posts/1
+    # GET /posts/1.json
+    def show
+      post = Post.find(params[:id])
+      if post.nil?
+        api_response = { message: "Can't find an post with provided id!" }
+          render json: api_response, status: :unprocessable_entity
+      else 
+        render json: { post: post }, status: :ok
+
+      end
+    end
+
     def post_params
       params.require(:post).permit(:title, :article, :status, :author_id, :likes)
     end

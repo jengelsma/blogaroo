@@ -25,7 +25,7 @@ module Api
       		render json: api_response, status: :unprocessable_entity
   		elsif author.update(author_params)
     		api_response = { message: "Author was updated successfully!" }
-      		render json: api_response, status: :unprocessable_entity
+      		render json: api_response, status: :ok
   		else
     		api_response = { message: "Request didn't process successfully!", errors: author.errors }
 			render json: api_response, status: :unprocessable_entity
@@ -46,9 +46,22 @@ module Api
   		end
   	end
 
+    # GET /authors/1
+    # GET /authors/1.json
+    def show
+      author = Author.find(params[:id])
+      if author.nil?
+        api_response = { message: "Can't find an author with provided id!" }
+          render json: api_response, status: :unprocessable_entity
+      else 
+        render json: { author: author }, status: :ok
+
+      end
+    end
+
   	private
   	def author_params
-		params.require(:author).permit(:fname, :lname, :email, :thumbnail)
+		  params.require(:author).permit(:fname, :lname, :email, :thumbnail)
     end
   end
 end

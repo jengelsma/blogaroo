@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   # <API routes>
   namespace :api, defaults: { format: 'json' } do
     get "authors/", to: "authors#index"
+    get "authors/:id", to: "authors#show"
     post "authors/", to: "authors#create"
     put "author/", to: "authors#update"
     delete "author/", to: "authors#destroy"
 
     get "posts/", to: "posts#index"
+    get "posts/:id", to: "posts#show"
     post "posts/", to: "posts#create"
   end
 
